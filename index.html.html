@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mark Bryan Casim — AI Automation Specialist</title>
+<meta name="description" content="AI Automation Specialist — voice AI agents, CRM automation, and workflow integrations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #10161A;
+    --bg-raise: #171F24;
+    --surface: #1C262C;
+    --surface-line: #2A363E;
+    --text: #E9EEF1;
+    --text-dim: #92A2AB;
+    --text-faint: #5C6B73;
+    --amber: #E5A244;
+    --amber-dim: #6B4E27;
+    --teal: #35B592;
+    --teal-dim: #1F4A3E;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(53,181,146,0.07), transparent 40%),
+      radial-gradient(circle at 85% 25%, rgba(229,162,68,0.06), transparent 45%);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(16,22,26,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--surface-line);
+  }
+  nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 62px;
+  }
+  .nav-mark {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--teal);
+    letter-spacing: 0.02em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .nav-links a { text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover { color: var(--amber); }
+  .nav-links li::before { content: "· "; color: var(--text-faint); }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 88px 0 60px;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    color: var(--teal);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--teal);
+    box-shadow: 0 0 8px var(--teal);
+    animation: blink 2s ease-in-out infinite;
+  }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    max-width: 760px;
+  }
+  h1 .accent { color: var(--amber); }
+
+  .hero-sub {
+    margin-top: 20px;
+    max-width: 560px;
+    color: var(--text-dim);
+    font-size: 16.5px;
+  }
+
+  .hero-cta {
+    margin-top: 34px;
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    padding: 12px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-primary {
+    background: var(--amber);
+    color: #1A1207;
+    font-weight: 600;
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(229,162,68,0.25); }
+  .btn-ghost {
+    border: 1px solid var(--surface-line);
+    color: var(--text);
+  }
+  .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* ---------- PIPELINE DIAGRAM ---------- */
+  .pipeline-box {
+    margin-top: 56px;
+    border: 1px solid var(--surface-line);
+    border-radius: 10px;
+    background: linear-gradient(180deg, var(--bg-raise), var(--bg));
+    padding: 26px 20px 18px;
+    overflow-x: auto;
+  }
+  .pipeline-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .pipeline-svg { width: 100%; min-width: 560px; height: auto; display: block; }
+  .node-label {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    fill: var(--text-dim);
+  }
+  .node-label.strong { fill: var(--text); font-weight: 600; }
+  .node-circle { fill: var(--bg-raise); stroke: var(--surface-line); stroke-width: 1.5; }
+  .node-circle.hub { stroke: var(--amber); }
+  .flow-path { fill: none; stroke: var(--surface-line); stroke-width: 1.5; }
+  .flow-dot { fill: var(--teal); filter: drop-shadow(0 0 4px rgba(53,181,146,0.8)); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flow-dot, .eyebrow .dot { animation: none !important; }
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section { padding: 64px 0; border-top: 1px solid var(--surface-line); }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 30px;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--amber);
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-text { max-width: 680px; color: var(--text-dim); font-size: 16px; }
+  .about-text strong { color: var(--text); font-weight: 600; }
+
+  /* ---------- CASE STUDY ---------- */
+  .case-card {
+    border: 1px solid var(--surface-line);
+    border-radius: 12px;
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .case-top { padding: 30px 28px 24px; border-bottom: 1px solid var(--surface-line); }
+  .case-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .case-title { font-family: var(--font-display); font-size: 22px; font-weight: 600; margin-bottom: 10px; }
+  .case-desc { color: var(--text-dim); font-size: 15px; max-width: 640px; }
+
+  .stack-row { display: flex; flex-wrap: wrap; gap: 8px; padding: 20px 28px; border-bottom: 1px solid var(--surface-line); }
+  .pill {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 5px 11px;
+    border-radius: 100px;
+    border: 1px solid var(--surface-line);
+    color: var(--text-dim);
+    background: var(--bg-raise);
+  }
+
+  .log-panel { padding: 24px 28px 30px; }
+  .log-title {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--text-faint);
+    margin-bottom: 14px;
+    letter-spacing: 0.05em;
+  }
+  .log-lines { font-family: var(--font-mono); font-size: 13px; }
+  .log-line { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px dashed rgba(255,255,255,0.05); }
+  .log-line:last-child { border-bottom: none; }
+  .log-tag {
+    flex-shrink: 0;
+    color: var(--teal);
+    background: var(--teal-dim);
+    padding: 1px 7px;
+    border-radius: 3px;
+    font-size: 11px;
+    height: fit-content;
+  }
+  .log-text { color: var(--text-dim); }
+  .log-text .highlight { color: var(--text); }
+
+  /* ---------- SKILLS GRID ---------- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--surface-line);
+    border: 1px solid var(--surface-line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .skill-cell { background: var(--surface); padding: 22px 20px; }
+  .skill-cell h3 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .skill-cell p { font-size: 13.5px; color: var(--text-dim); }
+  @media (max-width: 720px) {
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- TOOLS ---------- */
+  .tools-tier { margin-bottom: 22px; }
+  .tier-label {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tier-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .tier-dot.hands-on { background: var(--teal); }
+  .tier-dot.explored { background: var(--amber); }
+  .tier-dot.learning { background: var(--text-faint); }
+  .tier-label.hands-on { color: var(--teal); }
+  .tier-label.explored { color: var(--amber); }
+  .tier-label.learning { color: var(--text-faint); }
+  .tool-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  /* ---------- EXPERIENCE ---------- */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 20px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--surface-line);
+  }
+  .tl-item:last-child { border-bottom: none; }
+  .tl-dates { font-family: var(--font-mono); font-size: 12.5px; color: var(--text-faint); padding-top: 3px; }
+  .tl-role { font-family: var(--font-display); font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+  .tl-co { font-size: 13.5px; color: var(--teal); margin-bottom: 10px; }
+  .tl-desc { font-size: 14.5px; color: var(--text-dim); max-width: 600px; }
+  @media (max-width: 600px) {
+    .tl-item { grid-template-columns: 1fr; gap: 6px; }
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-box {
+    text-align: center;
+    padding: 60px 20px 70px;
+    border-top: 1px solid var(--surface-line);
+  }
+  .contact-box h2 { font-size: 30px; margin-bottom: 14px; }
+  .contact-box p { color: var(--text-dim); max-width: 460px; margin: 0 auto 30px; font-size: 15px; }
+  .contact-links { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--text-faint);
+    border-top: 1px solid var(--surface-line);
+  }
+
+  :focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-mark">mark_casim.sys</div>
+    <ul class="nav-links">
+      <li><a href="#work">work</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#stack">stack</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero wrap">
+  <div class="eyebrow"><span class="dot"></span> Available for automation projects</div>
+  <h1>I build the systems that answer your calls, book your calendar, and <span class="accent">never forget to follow up.</span></h1>
+  <p class="hero-sub">Mark Bryan Casim — AI Automation Specialist. I design and wire together voice AI agents, CRMs, and workflow automations end to end, then test them until they actually hold up on a real call.</p>
+  <div class="hero-cta">
+    <a href="#work" class="btn btn-primary">See the build →</a>
+    <a href="#contact" class="btn btn-ghost">Get in touch</a>
+  </div>
+
+  <div class="pipeline-box">
+    <div class="pipeline-label">// what a typical build looks like</div>
+    <svg class="pipeline-svg" viewBox="0 0 800 220" xmlns="http://www.w3.org/2000/svg">
+      <path class="flow-path" d="M 90 110 L 260 110" />
+      <path class="flow-path" d="M 300 110 L 560 45" />
+      <path class="flow-path" d="M 300 110 L 560 110" />
+      <path class="flow-path" d="M 300 110 L 560 175" />
+
+      <circle class="node-circle" cx="60" cy="110" r="26"></circle>
+      <text x="60" y="115" text-anchor="middle" class="node-label strong">Call</text>
+
+      <circle class="node-circle hub" cx="280" cy="110" r="30"></circle>
+      <text x="280" y="107" text-anchor="middle" class="node-label strong">AI</text>
+      <text x="280" y="121" text-anchor="middle" class="node-label strong">Agent</text>
+
+      <circle class="node-circle" cx="590" cy="45" r="24"></circle>
+      <text x="590" y="50" text-anchor="middle" class="node-label">Calendar</text>
+
+      <circle class="node-circle" cx="590" cy="110" r="24"></circle>
+      <text x="590" y="115" text-anchor="middle" class="node-label">CRM</text>
+
+      <circle class="node-circle" cx="590" cy="175" r="24"></circle>
+      <text x="590" y="180" text-anchor="middle" class="node-label">Email</text>
+
+      <circle class="flow-dot" r="4">
+        <animateMotion dur="3.2s" repeatCount="indefinite" path="M 90 110 L 250 110" />
+      </circle>
+      <circle class="flow-dot" r="4">
+        <animateMotion dur="2.6s" begin="0.9s" repeatCount="indefinite" path="M 305 105 L 566 47" />
+      </circle>
+      <circle class="flow-dot" r="4">
+        <animateMotion dur="2.2s" begin="1.15s" repeatCount="indefinite" path="M 310 110 L 566 110" />
+      </circle>
+      <circle class="flow-dot" r="4">
+        <animateMotion dur="2.9s" begin="1.4s" repeatCount="indefinite" path="M 305 115 L 566 173" />
+      </circle>
+    </svg>
+  </div>
+</header>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">01</span><h2>Featured build</h2></div>
+
+    <div class="case-card">
+      <div class="case-top">
+        <div class="case-tag">Independent project · voice AI receptionist</div>
+        <div class="case-title">RapidFlow Plumbing &amp; HVAC — AI Voice Receptionist</div>
+        <p class="case-desc">A production-style AI receptionist built end to end for a home services business: it answers the phone, understands intent, checks real-time availability, books the appointment, confirms by email, and logs the outcome to a CRM — every call, not just the bookings.</p>
+      </div>
+
+      <div class="stack-row">
+        <span class="pill">Vapi</span>
+        <span class="pill">Deepgram Nova-3</span>
+        <span class="pill">GPT-4.1</span>
+        <span class="pill">ElevenLabs</span>
+        <span class="pill">Make.com</span>
+        <span class="pill">Google Calendar</span>
+        <span class="pill">Gmail</span>
+        <span class="pill">HubSpot</span>
+      </div>
+
+      <div class="log-panel">
+        <div class="log-title">// diagnostics — real issues found and fixed during testing</div>
+        <div class="log-lines">
+          <div class="log-line"><span class="log-tag">FIXED</span><span class="log-text">AI confirmed a booking after the tool call had actually <span class="highlight">failed</span> — added a mandatory success guardrail before any confirmation.</span></div>
+          <div class="log-line"><span class="log-tag">FIXED</span><span class="log-text">Every time slot was showing as <span class="highlight">unavailable</span> — availability search window was too broad; rebuilt with structured date logic.</span></div>
+          <div class="log-line"><span class="log-tag">FIXED</span><span class="log-text">A single malformed customer email was silently <span class="highlight">blocking the entire booking response</span> — reordered the scenario so critical steps can't depend on optional ones.</span></div>
+          <div class="log-line"><span class="log-tag">FIXED</span><span class="log-text">Domain words and names were getting <span class="highlight">mis-transcribed</span> — added custom keyterm boosting to the transcriber.</span></div>
+          <div class="log-line"><span class="log-tag">FIXED</span><span class="log-text">Pipeline ID vs. display label <span class="highlight">mismatch</span> was breaking HubSpot API calls — traced to internal ID vs. label confusion and corrected.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">02</span><h2>What I actually do</h2></div>
+    <div class="skills-grid">
+      <div class="skill-cell">
+        <h3>Voice AI Development</h3>
+        <p>Configuring and tuning conversational agents — model, transcriber, voice, and tools — for real customer-facing calls.</p>
+      </div>
+      <div class="skill-cell">
+        <h3>Prompt &amp; Conversation Design</h3>
+        <p>Branch-based system prompts with guardrails that stop hallucinated confirmations and wrong-tool calls.</p>
+      </div>
+      <div class="skill-cell">
+        <h3>Workflow Automation</h3>
+        <p>Multi-step, multi-branch automations — webhooks, routers, formulas — that connect your tools together.</p>
+      </div>
+      <div class="skill-cell">
+        <h3>API &amp; Webhook Integration</h3>
+        <p>Custom tool schemas and structured request/response flows between AI, automation, and CRM systems.</p>
+      </div>
+      <div class="skill-cell">
+        <h3>CRM Automation</h3>
+        <p>Custom properties, pipeline stages, and dynamic routing logic based on real outcomes, not guesswork.</p>
+      </div>
+      <div class="skill-cell">
+        <h3>Testing &amp; Debugging</h3>
+        <p>Structured test scripts and root-cause diagnosis across systems — verifying real state, not AI claims.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">03</span><h2>Tools &amp; platforms</h2></div>
+
+    <div class="tools-tier">
+      <div class="tier-label hands-on"><span class="tier-dot hands-on"></span>Hands-on — built and shipped with</div>
+      <div class="tool-pills">
+        <span class="pill">Vapi</span><span class="pill">Deepgram</span><span class="pill">ElevenLabs</span>
+        <span class="pill">GPT-4.1</span><span class="pill">Make.com</span><span class="pill">HubSpot</span>
+        <span class="pill">Google Calendar</span><span class="pill">Gmail</span>
+      </div>
+    </div>
+
+    <div class="tools-tier">
+      <div class="tier-label explored"><span class="tier-dot explored"></span>Explored — architecture &amp; setup</div>
+      <div class="tool-pills"><span class="pill">GoHighLevel</span></div>
+    </div>
+
+    <div class="tools-tier">
+      <div class="tier-label learning"><span class="tier-dot learning"></span>Currently learning</div>
+      <div class="tool-pills">
+        <span class="pill">Retell AI</span><span class="pill">Bland AI</span>
+        <span class="pill">Zapier</span><span class="pill">n8n</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">04</span><h2>Experience</h2></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dates">2023 — Present</div>
+        <div>
+          <div class="tl-role">AI Automation Specialist</div>
+          <div class="tl-co">Presto Automation</div>
+          <p class="tl-desc">Built and operated AI voice agents and automation workflows for drive-thru ordering — designing conversation logic, tuning accuracy, and integrating new AI tools into live service delivery.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dates">2019 — 2024</div>
+        <div>
+          <div class="tl-role">Senior Logistics Specialist</div>
+          <div class="tl-co">Seidopro Global Inc.</div>
+          <p class="tl-desc">Managed end-to-end freight documentation and bookings for Ocean Network Express &amp; NYK across five countries — the operational discipline now behind every automation I build.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-top:none; padding:0;">
+  <div class="contact-box">
+    <h2>Let's automate something.</h2>
+    <p>Tell me what's eating your time — a missed-call problem, a manual booking process, a CRM nobody updates — and I'll tell you honestly if it's worth automating.</p>
+    <div class="contact-links">
+      <a href="mailto:casimbryanmark@gmail.com" class="btn btn-primary">casimbryanmark@gmail.com</a>
+      <a href="#" class="btn btn-ghost">Metro Manila, PH · Remote</a>
+    </div>
+  </div>
+</section>
+
+<footer>mark_casim.sys — built and deployed by Mark Bryan Casim</footer>
+
+</body>
+</html>
