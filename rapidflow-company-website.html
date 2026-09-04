@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rapid Flow Plumbing & HVAC — 24/7 Emergency Service</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B1B2B; --ink-2:#132C44; --line:#6FA8D8; --line-dim:#3A5C78;
+    --paper:#F3EEE3; --text-ink:#1B2430; --amber:#FF7A1A; --amber-dim:#C75E12;
+    --green:#2F7A4C; --cream:#F6F3EC;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream); color:var(--text-ink); font-family:'Inter',sans-serif; line-height:1.55;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  h1,h2,h3,.display{font-family:'Barlow Condensed',sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:0.01em; line-height:0.98;}
+  a{color:inherit;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+  section{padding:88px 0;}
+
+  /* EMERGENCY BAR */
+  .emergency-bar{background:var(--amber); color:var(--ink); padding:9px 0; text-align:center; font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:0.03em;}
+  .emergency-bar b{font-weight:700;}
+
+  /* NAV */
+  nav{background:var(--ink); padding:20px 0;}
+  .nav-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
+  .brand{font-family:'Barlow Condensed'; font-weight:800; font-size:22px; color:var(--cream); text-transform:uppercase;}
+  .brand span{color:var(--amber);}
+  .nav-links{display:flex; gap:26px; font-size:13px; letter-spacing:0.05em; text-transform:uppercase;}
+  .nav-links a{color:#B9C6D4; text-decoration:none;}
+  .nav-links a:hover{color:var(--amber);}
+  .nav-call{
+    background:var(--amber); color:var(--ink); font-family:'IBM Plex Mono'; font-weight:600;
+    font-size:14px; padding:10px 18px; border-radius:2px; text-decoration:none; white-space:nowrap;
+  }
+
+  /* HERO */
+  .hero{background:var(--ink); color:var(--cream); padding:90px 0 100px; position:relative; overflow:hidden;}
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background-image: linear-gradient(var(--ink-2) 1px, transparent 1px), linear-gradient(90deg, var(--ink-2) 1px, transparent 1px);
+    background-size:56px 56px; opacity:0.3;
+  }
+  .hero-inner{position:relative; z-index:1; display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;}
+  @media(max-width:860px){.hero-inner{grid-template-columns:1fr;}}
+  .hero h1{font-size:clamp(38px,5.5vw,58px); max-width:560px;}
+  .hero h1 em{font-style:normal; color:var(--amber);}
+  .hero p{font-size:17px; color:#C9D3DE; max-width:480px; margin-top:20px;}
+  .hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn-lg{
+    font-family:'IBM Plex Mono'; font-size:14px; letter-spacing:0.03em; text-transform:uppercase;
+    padding:16px 28px; border-radius:2px; text-decoration:none; display:inline-block;
+  }
+  .btn-amber{background:var(--amber); color:var(--ink); font-weight:600;}
+  .btn-outline{border:1px solid var(--line-dim); color:var(--line);}
+  .trust-row{display:flex; gap:26px; margin-top:36px; flex-wrap:wrap; font-family:'IBM Plex Mono'; font-size:12px; color:#8FA1B3; text-transform:uppercase; letter-spacing:0.04em;}
+  .trust-row span{display:flex; align-items:center; gap:6px;}
+  .trust-row .tick{color:var(--green); font-weight:700;}
+
+  .ai-card{
+    background:var(--paper); color:var(--text-ink); border-radius:8px; padding:28px;
+    box-shadow:0 30px 60px -15px rgba(0,0,0,0.5);
+  }
+  .ai-card .tag{font-family:'IBM Plex Mono'; font-size:11px; color:var(--amber-dim); text-transform:uppercase; letter-spacing:0.06em;}
+  .ai-card h3{font-size:22px; margin-top:8px;}
+  .ai-card p{font-size:13.5px; color:#5A5142; margin-top:10px;}
+  .ai-card .call-num{display:block; margin-top:18px; font-family:'IBM Plex Mono'; font-size:20px; font-weight:600; color:var(--ink);}
+
+  /* SERVICES */
+  .section-head{max-width:600px; margin-bottom:44px;}
+  .kicker{font-family:'IBM Plex Mono'; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--amber-dim); margin-bottom:12px; display:block;}
+  section h2{font-size:clamp(28px,4vw,40px);}
+  .services-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media(max-width:760px){.services-grid{grid-template-columns:1fr;}}
+  .svc-card{background:var(--ink); color:var(--cream); border-radius:6px; padding:32px;}
+  .svc-card h3{font-size:24px; color:var(--amber); margin-bottom:16px;}
+  .svc-card ul{list-style:none; display:flex; flex-direction:column; gap:10px;}
+  .svc-card li{font-size:14.5px; color:#C9D3DE; padding-left:18px; position:relative;}
+  .svc-card li::before{content:"—"; position:absolute; left:0; color:var(--line);}
+
+  /* WHY US */
+  .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  @media(max-width:760px){.why-grid{grid-template-columns:1fr;}}
+  .why-item .num{font-family:'IBM Plex Mono'; font-size:12px; color:var(--amber-dim);}
+  .why-item h3{font-size:22px; margin:8px 0 8px;}
+  .why-item p{font-size:14px; color:#5A5142;}
+
+  /* TESTIMONIALS */
+  .testi-note{font-family:'IBM Plex Mono'; font-size:11px; color:#8A8064; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:24px;}
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media(max-width:860px){.testi-grid{grid-template-columns:1fr;}}
+  .testi{background:#fff; border:1px solid #E4DCC8; border-radius:6px; padding:24px;}
+  .testi p{font-size:14.5px; color:#3A3428; font-style:italic;}
+  .testi .who{font-family:'IBM Plex Mono'; font-size:12px; color:#8A8064; margin-top:14px;}
+
+  /* CONTACT / QUOTE FORM */
+  .contact-wrap{display:grid; grid-template-columns:0.9fr 1.1fr; gap:48px;}
+  @media(max-width:860px){.contact-wrap{grid-template-columns:1fr;}}
+  .contact-info h3{font-size:20px; margin-bottom:10px;}
+  .contact-info p{font-size:14.5px; color:#5A5142; margin-bottom:20px;}
+  .info-row{font-family:'IBM Plex Mono'; font-size:13px; color:#3A3428; margin-bottom:8px;}
+  .info-row b{color:var(--ink);}
+
+  form{background:var(--ink); border-radius:8px; padding:32px; display:flex; flex-direction:column; gap:14px;}
+  .field label{display:block; font-family:'IBM Plex Mono'; font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color:var(--line); margin-bottom:6px;}
+  .field input, .field select, .field textarea{
+    width:100%; background:var(--ink-2); border:1px solid var(--line-dim); border-radius:4px;
+    padding:11px 12px; color:var(--cream); font-family:'Inter'; font-size:14px;
+  }
+  .field textarea{resize:vertical; min-height:80px;}
+  .field input:focus, .field select:focus, .field textarea:focus{outline:2px solid var(--amber); outline-offset:1px;}
+  .submit-btn{
+    background:var(--amber); color:var(--ink); font-family:'IBM Plex Mono'; font-weight:600;
+    font-size:14px; text-transform:uppercase; letter-spacing:0.03em; padding:14px; border:none;
+    border-radius:4px; cursor:pointer; margin-top:6px;
+  }
+  .submit-btn:hover{background:#FF8A35;}
+  .submit-btn:disabled{opacity:0.6; cursor:not-allowed;}
+  .form-status{font-family:'IBM Plex Mono'; font-size:12.5px; margin-top:2px; min-height:16px;}
+  .form-status.ok{color:#7FD99A;}
+  .form-status.err{color:#FF9B7A;}
+
+  /* FOOTER */
+  footer{background:var(--ink); color:#8FA1B3; padding:56px 0 30px;}
+  .foot-grid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:32px; margin-bottom:40px;}
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr;}}
+  footer h4{font-family:'IBM Plex Mono'; font-size:12px; color:var(--line); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:14px;}
+  footer .brand{margin-bottom:12px;}
+  footer p{font-size:13.5px;}
+  footer ul{list-style:none; display:flex; flex-direction:column; gap:8px; font-size:13.5px;}
+  .foot-bottom{border-top:1px solid var(--ink-2); padding-top:20px; font-family:'IBM Plex Mono'; font-size:11.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  ::selection{background:var(--amber); color:var(--ink);}
+
+  /* HIRE BADGE */
+  .hire-badge{
+    position:fixed; bottom:20px; right:20px; z-index:50;
+    background:var(--ink); color:var(--cream); border:1px solid var(--amber);
+    border-radius:30px; padding:10px 18px 10px 14px; display:flex; align-items:center; gap:10px;
+    text-decoration:none; box-shadow:0 12px 30px -8px rgba(0,0,0,0.5);
+    font-family:'IBM Plex Mono'; font-size:12.5px;
+  }
+  .hire-badge .avatar{width:26px; height:26px; border-radius:50%; background:var(--amber); color:var(--ink); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px;}
+  .hire-badge:hover{background:var(--ink-2);}
+  @media(max-width:600px){.hire-badge span.long{display:none;}}
+</style>
+</head>
+<body>
+
+<a href="mailto:casimbryanmark@gmail.com?subject=AI%20Receptionist%20Inquiry" class="hire-badge">
+  <span class="avatar">MC</span>
+  <span class="long">Built by Mark Casim — Hire me</span>
+  <span class="short" style="display:none;">Hire me</span>
+</a>
+
+<div class="emergency-bar">🚨 24/7 EMERGENCY SERVICE — <b>Burst pipe or no AC? Call now, we answer instantly.</b></div>
+
+<nav>
+  <div class="wrap nav-row">
+    <div class="brand">RAPID<span>FLOW</span></div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="tel:+13076244001" class="nav-call">📞 Call Now</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <h1>Plumbing & HVAC problems, <em>fixed fast.</em></h1>
+      <p>Rapid Flow answers every call — day or night — books your appointment on the spot, and gets a licensed tech to your door. No voicemail, no phone tag, no waiting.</p>
+      <div class="hero-ctas">
+        <a href="tel:+13076244001" class="btn-lg btn-amber">Call (307) 624-4001</a>
+        <a href="#contact" class="btn-lg btn-outline">Request Service Online</a>
+      </div>
+      <div class="trust-row">
+        <span><span class="tick">✓</span> Licensed & Insured</span>
+        <span><span class="tick">✓</span> 24/7 Emergency Line</span>
+        <span><span class="tick">✓</span> Free Install Estimates</span>
+      </div>
+    </div>
+    <div class="ai-card">
+      <div class="tag">Answered instantly</div>
+      <h3>Every call gets picked up.</h3>
+      <p>Our line is answered 24/7 — real availability checked, real appointments booked, on the very first call. No missed jobs, no waiting for a callback.</p>
+      <span class="call-num">(307) 624-4001</span>
+    </div>
+  </div>
+</header>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">What we do</span>
+      <h2>Plumbing & HVAC, handled by one team.</h2>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card">
+        <h3>Plumbing</h3>
+        <ul>
+          <li>Drain cleaning & unclogging</li>
+          <li>Leak detection & repair</li>
+          <li>Water heater repair & installation</li>
+          <li>Emergency burst pipe response</li>
+          <li>Fixture installation</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <h3>HVAC</h3>
+        <ul>
+          <li>AC repair & installation</li>
+          <li>Heating system repair</li>
+          <li>Seasonal maintenance & tune-ups</li>
+          <li>Emergency no-heat / no-cool response</li>
+          <li>System replacement estimates</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why" style="background:#EFE8D6;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Why homeowners call us</span>
+      <h2>No voicemail. No waiting. No surprises.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="num mono">01</div>
+        <h3>Answered instantly</h3>
+        <p>Every call gets picked up immediately — 7am to 7pm daily, and 24/7 for emergencies.</p>
+      </div>
+      <div class="why-item">
+        <div class="num mono">02</div>
+        <h3>Booked on the call</h3>
+        <p>Your appointment is confirmed before you hang up, with a written confirmation right after.</p>
+      </div>
+      <div class="why-item">
+        <div class="num mono">03</div>
+        <h3>Upfront pricing</h3>
+        <p>Free estimates on installs, and a diagnostic fee that's waived the moment you book the repair.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="testi-note">Example reviews — demo project</div>
+    <div class="testi-grid">
+      <div class="testi">
+        <p>"Called at 9pm with no hot water — had someone booked for the next morning before I even hung up."</p>
+        <div class="who">— T. Reyes, Tanza</div>
+      </div>
+      <div class="testi">
+        <p>"Finally a plumber that doesn't send me to voicemail. Answered on the second ring."</p>
+        <div class="who">— J. Dela Cruz, Cavite</div>
+      </div>
+      <div class="testi">
+        <p>"AC died in the middle of summer — they had a tech out within the day."</p>
+        <div class="who">— A. Santos, Amaya Breeze</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:#EFE8D6;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Get in touch</span>
+      <h2>Request service or ask a question.</h2>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <h3>Prefer to call?</h3>
+        <p>We answer 24/7, including emergencies — you'll talk to someone (or our always-on line) immediately, no hold music.</p>
+        <div class="info-row"><b>Phone:</b> (307) 624-4001</div>
+        <div class="info-row"><b>Hours:</b> Mon–Sat 7am–7pm · 24/7 Emergency</div>
+        <div class="info-row"><b>Service Area:</b> Within 25 miles of the metro area</div>
+      </div>
+      <form id="quote-form">
+        <div class="field"><label for="name">Name</label><input type="text" id="name" required></div>
+        <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" required></div>
+        <div class="field"><label for="email">Email</label><input type="email" id="email"></div>
+        <div class="field">
+          <label for="service">Service Needed</label>
+          <select id="service" required>
+            <option value="">Select one...</option>
+            <option>Drain Cleaning</option>
+            <option>Leak Repair</option>
+            <option>Water Heater</option>
+            <option>AC Repair / Install</option>
+            <option>Heating Repair</option>
+            <option>Emergency</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="field"><label for="message">Tell us what's going on</label><textarea id="message"></textarea></div>
+        <button type="submit" class="submit-btn" id="submit-btn">Request Service</button>
+        <div class="form-status" id="form-status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">RAPID<span style="color:var(--amber);">FLOW</span></div>
+        <p>24/7 plumbing & HVAC service. Licensed, insured, and always answering.</p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul><li><a href="#services">Services</a></li><li><a href="#why">Why Us</a></li><li><a href="#contact">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul><li>(307) 624-4001</li><li>Mon–Sat 7am–7pm</li><li>24/7 Emergency Line</li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© RAPID FLOW PLUMBING & HVAC — PORTFOLIO DEMO PROJECT</span>
+      <span>
+        BUILT BY MARK CASIM, AI VOICE &amp; AUTOMATION SPECIALIST —
+        <a href="mailto:casimbryanmark@gmail.com" style="color:var(--amber); text-decoration:underline;">casimbryanmark@gmail.com</a>
+        · <a href="tel:+639651958981" style="color:var(--amber); text-decoration:underline;">+63 965 195 8981</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Replace this with your real Make.com webhook URL once created (see setup instructions).
+  const WEBHOOK_URL = "https://hook.eu1.make.com/REPLACE_WITH_YOUR_WEBSITE_LEAD_WEBHOOK";
+
+  const form = document.getElementById('quote-form');
+  const statusEl = document.getElementById('form-status');
+  const btn = document.getElementById('submit-btn');
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    statusEl.textContent = '';
+    statusEl.className = 'form-status';
+
+    const payload = {
+      name: document.getElementById('name').value,
+      phone: document.getElementById('phone').value,
+      email: document.getElementById('email').value,
+      service: document.getElementById('service').value,
+      message: document.getElementById('message').value,
+      source: 'website_form'
+    };
+
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('Request failed');
+      statusEl.textContent = "Thanks! We'll be in touch shortly.";
+      statusEl.className = 'form-status ok';
+      form.reset();
+    } catch (err) {
+      statusEl.textContent = "Something went wrong — please call us instead.";
+      statusEl.className = 'form-status err';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Request Service';
+    }
+  });
+</script>
+
+</body>
+</html>
